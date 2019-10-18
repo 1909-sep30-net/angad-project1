@@ -27,7 +27,7 @@ namespace StoreApplication.Data.Entities
             modelBuilder.Entity<Customers>(entity =>
             {
                 entity.HasKey(e => e.CustomerId)
-                    .HasName("PK__Customer__A4AE64D88B3F5A0F");
+                    .HasName("PK__Customer__A4AE64D87A61FBD6");
 
                 entity.Property(e => e.FirstName)
                     .HasMaxLength(50)
@@ -45,18 +45,18 @@ namespace StoreApplication.Data.Entities
                 entity.HasOne(d => d.Location)
                     .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.LocationId)
-                    .HasConstraintName("FK__Inventory__Locat__70099B30");
+                    .HasConstraintName("FK__Inventory__Locat__7FD5EEA5");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__Inventory__Produ__70FDBF69");
+                    .HasConstraintName("FK__Inventory__Produ__00CA12DE");
             });
 
             modelBuilder.Entity<Locations>(entity =>
             {
                 entity.HasKey(e => e.LocationId)
-                    .HasName("PK__Location__E7FEA4976C127912");
+                    .HasName("PK__Location__E7FEA497E2BFE38D");
 
                 entity.Property(e => e.City)
                     .HasMaxLength(50)
@@ -66,48 +66,48 @@ namespace StoreApplication.Data.Entities
             modelBuilder.Entity<OrderedProducts>(entity =>
             {
                 entity.HasKey(e => e.Opid)
-                    .HasName("PK__OrderedP__AE2CBEFEBFA91FE8");
+                    .HasName("PK__OrderedP__AE2CBEFEFB33104A");
 
                 entity.Property(e => e.Opid).HasColumnName("OPId");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.OrderedProducts)
                     .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK__OrderedPr__Custo__6A50C1DA");
+                    .HasConstraintName("FK__OrderedPr__Custo__7A1D154F");
 
                 entity.HasOne(d => d.Location)
                     .WithMany(p => p.OrderedProducts)
                     .HasForeignKey(d => d.LocationId)
-                    .HasConstraintName("FK__OrderedPr__Locat__6D2D2E85");
+                    .HasConstraintName("FK__OrderedPr__Locat__7CF981FA");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderedProducts)
                     .HasForeignKey(d => d.OrderId)
-                    .HasConstraintName("FK__OrderedPr__Order__6B44E613");
+                    .HasConstraintName("FK__OrderedPr__Order__7B113988");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderedProducts)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__OrderedPr__Produ__6C390A4C");
+                    .HasConstraintName("FK__OrderedPr__Produ__7C055DC1");
             });
 
             modelBuilder.Entity<Orders>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Orders__C3905BCF125ADD51");
+                    .HasName("PK__Orders__C3905BCF09DF805E");
 
                 entity.Property(e => e.OrderDate).HasColumnType("date");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK__Orders__Customer__6774552F");
+                    .HasConstraintName("FK__Orders__Customer__7740A8A4");
             });
 
             modelBuilder.Entity<Products>(entity =>
             {
                 entity.HasKey(e => e.ProductId)
-                    .HasName("PK__Products__B40CC6CD5CC085EE");
+                    .HasName("PK__Products__B40CC6CD01DDBD1A");
 
                 entity.Property(e => e.ProductName)
                     .IsRequired()
