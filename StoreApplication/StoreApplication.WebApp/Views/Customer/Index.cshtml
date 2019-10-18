@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Customers";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Customers Menu</h1>
+        <br /><br /><br />
+        <a asp-area="" asp-controller="Customer" asp-action="AddCustomer">
+            <button type="button" class="btn btn-dark">Add A New Customer</button>
+        </a>
+        <a asp-area="" asp-controller="Customer" asp-action="ListCustomer">
+            <button type="button" class="btn btn-dark">List All Customers</button>
+        </a>
+    </div>
+

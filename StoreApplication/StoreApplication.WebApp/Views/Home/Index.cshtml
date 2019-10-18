@@ -2,7 +2,40 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+    .jumbotron {
+        background-image: url(http://www.volt.com/uploadedImages/Blog/how_to_get_a_job_as_a_video_game_tester_banner.jpg);
+    }
+</style>
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <p>The Video Game Store</p>
+
+    <br /><br />
+
+    <!--<div class="jumbotron text-center">-->
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula vel felis vitae maximus. Aliquam cursus, sem quis gravida auctor, ipsum ipsum convallis nisl, quis semper leo nulla vel est. In blandit placerat efficitur. Nunc faucibus ut sem sit amet pretium. Sed a nisi dapibus velit dignissim imperdiet. Nunc varius ante vitae libero sodales, et ornare purus sagittis. Vestibulum tincidunt dolor ac lorem sodales, non commodo mauris aliquet. Maecenas non efficitur nibh. Donec eu purus ut ipsum fringilla luctus. Aenean fringilla augue quis varius finibus. Fusce quis blandit felis. Duis tempor placerat congue. Phasellus rhoncus neque et nibh sodales auctor. Phasellus euismod tincidunt vehicula. Cras vitae lectus mattis, porttitor lacus a, viverra est.
+    </p>
+    <!--</div>-->
+
+    <br /><br />
+
+    <a asp-area="" asp-controller="Customer" asp-action="Index">
+        <button type="button" class="btn btn-dark">Customer Menu</button>
+    </a>
+    <br /><br />
+    <a asp-area="" asp-controller="Product" asp-action="Index">
+        <button type="button" class="btn btn-dark">Products Menu</button>
+    </a>
+    <br /><br />
+    <a asp-area="" asp-controller="Order" asp-action="Index">
+        <button type="button" class="btn btn-dark">Orders Menu</button>
+    </a>
+    <br /><br /><br /><br />
+
+    <img id="rcorners" src="https://i.pinimg.com/originals/c7/42/05/c74205f902117d5007522dba182488a6.png" />
+
 </div>
