@@ -4,25 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StoreApplication.Data;
+using StoreApplication.Data.Entities;
 
 namespace StoreApplication.WebApp.Controllers
 {
     public class ProductController : Controller
     {
+
+        ProductData prodData = new ProductData();
+        
         // GET: Product
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Product/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Product/Create
-        public ActionResult Create()
+        public ActionResult AddProduct()
         {
             return View();
         }
@@ -42,6 +41,20 @@ namespace StoreApplication.WebApp.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult ListProducts()
+        {
+            List<Products> products = prodData.DisplayProductsDB();
+
+            return View(products);
+        }
+
+        #region To Be Added Later
+        // GET: Product/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
         }
 
         // GET: Product/Edit/5
@@ -89,5 +102,6 @@ namespace StoreApplication.WebApp.Controllers
                 return View();
             }
         }
+        #endregion
     }
 }

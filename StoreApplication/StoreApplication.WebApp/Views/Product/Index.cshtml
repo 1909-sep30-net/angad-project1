@@ -1,7 +1,33 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products Menu";
 }
 
-<h1>Index</h1>
+    <div class="text-center">
+        <h1 class="display-4">Products Menu</h1>
+        <br /><br />
+
+        <img class="rounded-top" src="https://cdnssl.hackinformer.com/wp-content/uploads/2015/11/09131449/game_box_art.jpg" width="600" height="400" />
+
+        <br /><br />
+
+        <p>Please Select Your Desired Option: </p>
+
+        <br />
+
+        <a asp-area="" asp-controller="Product" asp-action="AddProduct">
+            <button type="button" class="btn btn-dark">Add A New Product</button>
+        </a>
+        <br />
+        <br />
+        <a asp-area="" asp-controller="Product" asp-action="ListProducts">
+            <button type="button" class="btn btn-dark">List All Products</button>
+        </a>
+        <br />
+        <br />
+        <br />
+
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="https://i.imgur.com/LtLoSed.png" width="247" height="173" /></a>
+        
+    </div>
 

@@ -43,7 +43,7 @@ namespace StoreApplication.WebApp.Controllers
 
                 customerData.AddCustomerDB(customers);
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ListCustomers));
             }
             catch
             {
@@ -81,10 +81,9 @@ namespace StoreApplication.WebApp.Controllers
                 var customers = new Customers
                 {
                     FirstName = collection["FirstName"],
-                    LastName = collection["LastName"]
                 };
 
-                searchedName = customers.FirstName + customers.LastName;
+                searchedName = customers.FirstName;
 
                 return RedirectToAction(nameof(SearchCustomerDisplay));
             }

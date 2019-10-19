@@ -1,22 +1,39 @@
 ﻿
 @{
-    ViewData["Title"] = "Customers";
+    ViewData["Title"] = "Customers Menu";
 }
 
     <div class="text-center">
         <h1 class="display-4">Customers Menu</h1>
-        <br /><br /><br />
+        <br /><br />
+
+        <img class="rounded-circle" src="https://www.sackettwaconia.com/wp-content/uploads/default-profile.png" height="250" width="250" />
+
+        <br /><br />
+
+        <p>Please Select Your Desired Option: </p>
+
+        <br />
+
         <a asp-area="" asp-controller="Customer" asp-action="AddCustomer">
             <button type="button" class="btn btn-dark">Add A New Customer</button>
         </a>
-        <br /><br />
+        <br />
+        <br />
         <a asp-area="" asp-controller="Customer" asp-action="ListCustomers">
             <button type="button" class="btn btn-dark">List All Customers</button>
         </a>
-        <br /><br />
+        <br />
+        <br />
         <a asp-area="" asp-controller="Customer" asp-action="SearchIndex">
             <button type="button" class="btn btn-dark">Search For A Customer</button>
         </a>
-        <br /><br /><br />
+
+        <br />
+        <br />
+        <br />
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="https://i.imgur.com/LtLoSed.png" width="247" height="173" /></a>
     </div>
+
+
 
