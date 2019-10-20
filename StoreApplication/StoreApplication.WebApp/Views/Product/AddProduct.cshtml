@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddProduct">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProductName" class="control-label">Game Name</label>
@@ -22,6 +22,204 @@
                 <input asp-for="ProductType" class="form-control" />
                 <span asp-validation-for="ProductType" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label class="control-label">Number Of Stores</label>
+                <select name="storeCount" id="stores">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+
+            <div id="storeForm">
+                <div class="form-group">
+                    <label>Location</label>
+                    <select name="Location1" id="stores">
+                        <option value="">Select Location</option>
+                        <option value="1">LA</option>
+                        <option value="2">San Diego</option>
+                        <option value="3">Sacramento</option>
+                        <option value="4">Dallas</option>
+                        <option value="5">Arlington</option>
+                        <option value="6">Fort Worth</option>
+                    </select>
+                    <div class="form-group">
+                        <label>Inventory</label>
+                        <input name="Inventory1" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div id="storeForm2">
+                <div class="form-group">
+                    <label>Location</label>
+                    <select name="Location2" id="stores">
+                        <option value="">Select Location</option>
+                        <option value="1">LA</option>
+                        <option value="2">San Diego</option>
+                        <option value="3">Sacramento</option>
+                        <option value="4">Dallas</option>
+                        <option value="5">Arlington</option>
+                        <option value="6">Fort Worth</option>
+                    </select>
+                    <div class="form-group">
+                        <label>Inventory</label>
+                        <input name="Inventory2" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div id="storeForm3">
+                <div class="form-group">
+                    <label>Location</label>
+                    <select name="Location3" id="stores">
+                        <option value="">Select Location</option>
+                        <option value="1">LA</option>
+                        <option value="2">San Diego</option>
+                        <option value="3">Sacramento</option>
+                        <option value="4">Dallas</option>
+                        <option value="5">Arlington</option>
+                        <option value="6">Fort Worth</option>
+                    </select>
+                    <div class="form-group">
+                        <label>Inventory</label>
+                        <input name="Inventory3" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div id="storeForm4">
+                <div class="form-group">
+                    <label>Location</label>
+                    <select name="Location4" id="stores">
+                        <option value="">Select Location</option>
+                        <option value="1">LA</option>
+                        <option value="2">San Diego</option>
+                        <option value="3">Sacramento</option>
+                        <option value="4">Dallas</option>
+                        <option value="5">Arlington</option>
+                        <option value="6">Fort Worth</option>
+                    </select>
+                    <div class="form-group">
+                        <label>Inventory</label>
+                        <input name="Inventory4" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div id="storeForm5">
+                <div class="form-group">
+                    <label>Location</label>
+                    <select name="Location5" id="stores">
+                        <option value="">Select Location</option>
+                        <option value="1">LA</option>
+                        <option value="2">San Diego</option>
+                        <option value="3">Sacramento</option>
+                        <option value="4">Dallas</option>
+                        <option value="5">Arlington</option>
+                        <option value="6">Fort Worth</option>
+                    </select>
+                    <div class="form-group">
+                        <label>Inventory</label>
+                        <input name="Inventory5" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div id="storeForm6">
+                <div class="form-group">
+                    <label>Location</label>
+                    <select name="Location6" id="stores">
+                        <option value="">Select Location</option>
+                        <option value="1">LA</option>
+                        <option value="2">San Diego</option>
+                        <option value="3">Sacramento</option>
+                        <option value="4">Dallas</option>
+                        <option value="5">Arlington</option>
+                        <option value="6">Fort Worth</option>
+                    </select>
+                    <div class="form-group">
+                        <label>Inventory</label>
+                        <input name="Inventory6" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+                var stores = document.getElementById("stores");
+                var storeCount = 0;
+                stores.onchange = function () {
+                    storeCount = stores.options[stores.selectedIndex].value;
+                    if (storeCount == 0) {
+                        document.getElementById("storeForm").style.display = "none";
+                        document.getElementById("storeForm2").style.display = "none";
+                        document.getElementById("storeForm3").style.display = "none";
+                        document.getElementById("storeForm4").style.display = "none";
+                        document.getElementById("storeForm5").style.display = "none";
+                        document.getElementById("storeForm6").style.display = "none";
+                    }
+                    if (storeCount == 1) {
+                        document.getElementById("storeForm").style.display = "block";
+                        document.getElementById("storeForm2").style.display = "none";
+                        document.getElementById("storeForm3").style.display = "none";
+                        document.getElementById("storeForm4").style.display = "none";
+                        document.getElementById("storeForm5").style.display = "none";
+                        document.getElementById("storeForm6").style.display = "none";
+                    }
+                    if (storeCount == 2) {
+                        document.getElementById("storeForm").style.display = "block";
+                        document.getElementById("storeForm2").style.display = "block";
+                        document.getElementById("storeForm3").style.display = "none";
+                        document.getElementById("storeForm4").style.display = "none";
+                        document.getElementById("storeForm5").style.display = "none";
+                        document.getElementById("storeForm6").style.display = "none";
+                    }
+                    if (storeCount == 3) {
+                        document.getElementById("storeForm").style.display = "block";
+                        document.getElementById("storeForm2").style.display = "block";
+                        document.getElementById("storeForm3").style.display = "block";
+                        document.getElementById("storeForm4").style.display = "none";
+                        document.getElementById("storeForm5").style.display = "none";
+                        document.getElementById("storeForm6").style.display = "none";
+                    }
+                    if (storeCount == 4) {
+                        document.getElementById("storeForm").style.display = "block";
+                        document.getElementById("storeForm2").style.display = "block";
+                        document.getElementById("storeForm3").style.display = "block";
+                        document.getElementById("storeForm4").style.display = "block";
+                        document.getElementById("storeForm5").style.display = "none";
+                        document.getElementById("storeForm6").style.display = "none";
+                    }
+                    if (storeCount == 5) {
+                        document.getElementById("storeForm").style.display = "block";
+                        document.getElementById("storeForm2").style.display = "block";
+                        document.getElementById("storeForm3").style.display = "block";
+                        document.getElementById("storeForm4").style.display = "block";
+                        document.getElementById("storeForm5").style.display = "block";
+                        document.getElementById("storeForm6").style.display = "none";
+                    }
+                    if (storeCount == 6) {
+                        document.getElementById("storeForm").style.display = "block";
+                        document.getElementById("storeForm2").style.display = "block";
+                        document.getElementById("storeForm3").style.display = "block";
+                        document.getElementById("storeForm4").style.display = "block";
+                        document.getElementById("storeForm5").style.display = "block";
+                        document.getElementById("storeForm6").style.display = "block";
+                    }
+                }
+                function dontShowForm() {
+                    document.getElementById("storeForm").style.display = "none";
+                    document.getElementById("storeForm2").style.display = "none";
+                    document.getElementById("storeForm3").style.display = "none";
+                    document.getElementById("storeForm4").style.display = "none";
+                    document.getElementById("storeForm5").style.display = "none";
+                    document.getElementById("storeForm6").style.display = "none";
+                }
+                dontShowForm();
+            </script>
+
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

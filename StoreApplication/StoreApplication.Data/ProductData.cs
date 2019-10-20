@@ -15,7 +15,10 @@ namespace StoreApplication.Data
         Product prodData = new Product();
         public int ProductCount { get; set; }
 
-        public void AddProductsDB(string productName, string productType, int storeLocation, int inventoryForLoc, int storeCount, List<int> storeLocationList, List<int> storeInventoryList)
+        Products products = new Products();
+        Inventory inventory = new Inventory();
+
+        public void AddProductsDB(Products products, List<string> locs, List<string> inv, int storeCount)
         {
             string connectionString = SecretConfiguration.configurationString;
 
@@ -27,8 +30,8 @@ namespace StoreApplication.Data
 
             Products prod = new Products();
             
-            prod.ProductName = productName;
-            prod.ProductType = productType;
+            prod.ProductName = products.ProductName;
+            prod.ProductType = products.ProductType;
 
             context.Products.Add(prod);
             context.SaveChanges();
@@ -37,33 +40,27 @@ namespace StoreApplication.Data
             {
                 Locations tempLoc = new Locations();
                 Inventory tempInv = new Inventory();
+
                 
-                tempLoc.LocationId = storeLocationList[i];
+                tempLoc.LocationId = int.Parse(locs[i]);
                 
-                var foundName = context.Locations.FirstOrDefault(p => p.LocationId == storeLocationList[i]);
+                var foundName = context.Locations.FirstOrDefault(p => p.LocationId == tempLoc.LocationId);
                 
                 tempLoc.City = foundName.City;
 
-                if (foundName is null)
-                {
-                    //context.Locations.Add(tempLoc);
-                    //context.SaveChanges();
-                    //context.Products.Add(prod);
-                    //context.SaveChanges();
-                }
+                if (foundName is null) { }
                 else
                 {
                     tempLoc.LocationId = foundName.LocationId;
                     tempInv.LocationId = tempLoc.LocationId;
-                    //tempInv.ProductId = prod.ProductId;
                 }
                 tempInv.ProductId = prod.ProductId;
 
-                tempInv.Inventory1 = storeInventoryList[i];
+                tempInv.Inventory1 = int.Parse(inv[i]);
                 
                 context.Inventory.Add(tempInv);
             }
-
+            
             context.SaveChanges();
         }
 
