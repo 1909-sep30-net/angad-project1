@@ -32,6 +32,7 @@ namespace StoreApplication.Data
             
             prod.ProductName = products.ProductName;
             prod.ProductType = products.ProductType;
+            prod.ProductUrl = products.ProductUrl;
 
             context.Products.Add(prod);
             context.SaveChanges();

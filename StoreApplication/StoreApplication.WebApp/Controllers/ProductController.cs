@@ -75,6 +75,7 @@ namespace StoreApplication.WebApp.Controllers
                 {
                     ProductName = collection["ProductName"],
                     ProductType = collection["ProductType"],
+                    ProductUrl = collection["ProductUrl"]
                 };
 
                 prodData.AddProductsDB(product, locs, inv, storeCount);

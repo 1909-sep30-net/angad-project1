@@ -24,7 +24,9 @@
                 @*@Html.DisplayNameFor(model => model.ProductType)*@
                 Platform
             </th>
-            <th></th>
+            <th>
+                Cover Art
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -40,7 +42,10 @@
                 @Html.DisplayFor(modelItem => item.ProductType)
             </td>
             <td>
-                <img src="https://i.imgur.com/jHQPWeo.png" width="152" height="177" /> <!-- REPLACE WITH URL FROM DATABASE-->
+                @*https://i.imgur.com/jHQPWeo.png*@
+                
+                <img src="@Html.DisplayFor(modelItem => item.ProductUrl)" width="152" height="177" />
+                
             </td>
         </tr>
 }

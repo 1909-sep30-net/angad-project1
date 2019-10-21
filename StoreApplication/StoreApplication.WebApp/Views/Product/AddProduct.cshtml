@@ -22,6 +22,11 @@
                 <input asp-for="ProductType" class="form-control" />
                 <span asp-validation-for="ProductType" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="ProductUrl" class="control-label">Cover Art [Optional]</label>
+                <input asp-for="ProductUrl" class="form-control" value="https://i.imgur.com/jHQPWeo.png"/>
+                <span asp-validation-for="ProductType" class="text-danger"></span>
+            </div>
 
             <div class="form-group">
                 <label class="control-label">Number Of Stores</label>
