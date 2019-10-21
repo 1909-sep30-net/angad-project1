@@ -6,6 +6,7 @@ using StoreApplication.Library;
 using Microsoft.EntityFrameworkCore;
 using StoreApplication.Data.Entities;
 using System.Linq;
+using StoreApplication.Business;
 
 namespace StoreApplication.Data
 {
@@ -93,7 +94,7 @@ namespace StoreApplication.Data
 
         }
 
-        public void DisplayOrdersDB()
+        public List<OrdersLogic> DisplayOrdersDB()
         {
             string connectionString = SecretConfiguration.configurationString;
 
@@ -105,16 +106,35 @@ namespace StoreApplication.Data
             using var context2 = new GameStoreContext(options);
             using var context3 = new GameStoreContext(options);
             using var context4 = new GameStoreContext(options);
-            
+            using var context5 = new GameStoreContext(options);
+
+            List<OrdersLogic> orders = new List<OrdersLogic>();
+
             foreach (Orders order in context.Orders)
             {
-                Console.Write($"OrderID: {order.OrderId} | Order Date: {order.OrderDate.Date.ToString("d")} | Quantity: {order.Quantity} | ");
+                OrdersLogic tempOrder = new OrdersLogic();
+                
+                tempOrder.OrderId = order.OrderId;
+                tempOrder.OrderDate = order.OrderDate;
+                tempOrder.Quantity = (int) order.Quantity;
+                
                 var foundName = context2.Customers.FirstOrDefault(p => p.CustomerId == order.CustomerId);
-                Console.Write($"Customer Name: {foundName.FirstName + " " + foundName.LastName} | ");
+
+                tempOrder.CustomerName = foundName.FirstName + " " + foundName.LastName;
+
                 var foundProduct = context3.OrderedProducts.FirstOrDefault(p => p.CustomerId == foundName.CustomerId && p.OrderId == order.OrderId);
                 var foundProductName = context4.Products.FirstOrDefault(p => p.ProductId == foundProduct.ProductId);
-                Console.Write($"Game Name: {foundProductName.ProductName}\n");
+                var foundLocName = context5.Locations.FirstOrDefault(p => p.LocationId == foundProduct.LocationId);
+
+                tempOrder.LocationName = foundLocName.City;
+                tempOrder.ProductName = foundProductName.ProductName;
+
+                orders.Add(tempOrder);
             }
+            
+
+            return orders;
+
         }
 
         public void DisplayOrdersCustomerDB(int customerId)

@@ -6,29 +6,51 @@
     <title>@ViewData["Title"] - VGS</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .zoom {
+            padding: 50px;
+            transition: transform .2s;
+            width: 380px;
+            height: 160px;
+            margin: 0 auto;
+        }
+
+        .zoom:hover {
+            transform: scale(1.25);
+        }
+        .zoombuttons {
+            padding: 20px;
+            transition: transform .2s;
+            margin: 0 auto;
+        }
+
+        .zoombuttons:hover {
+            transform: scale(1.25);
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="https://i.imgur.com/cwOhxnO.png" width="289" height="64"/></a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img class="zoom" src="https://i.imgur.com/cwOhxnO.png" width="289" height="64" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-xl-grow-0">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <li class="nav-item zoombuttons">
+                            <b><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></b>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Customers</a>
+                        <li class="nav-item zoombuttons">
+                            <b><a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Customers</a></b>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
+                        <li class="nav-item zoombuttons">
+                            <b><a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a></b>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Orders</a>
+                        <li class="nav-item zoombuttons">
+                            <b><a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Orders</a></b>
                         </li>
                     </ul>
                 </div>

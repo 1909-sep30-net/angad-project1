@@ -53,6 +53,7 @@ namespace StoreApplication.WebApp.Controllers
                 int storeCount;
                 storeCount = int.Parse(collection["storeCount"]);
 
+                #region Locations&Inventory
                 List<string> locs = new List<string>();
                 locs.Add(collection["Location1"]);
                 locs.Add(collection["Location2"]);
@@ -68,6 +69,7 @@ namespace StoreApplication.WebApp.Controllers
                 inv.Add(collection["Inventory4"]);
                 inv.Add(collection["Inventory5"]);
                 inv.Add(collection["Inventory6"]);
+                #endregion
 
                 Products product = new Products
                 {

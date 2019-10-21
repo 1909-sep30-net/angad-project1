@@ -4,19 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StoreApplication.Data;
+using StoreApplication.Data.Entities;
+using StoreApplication.Business;
 
 namespace StoreApplication.WebApp.Controllers
 {
     public class OrderController : Controller
     {
+        OrderData orderData = new OrderData();
+
         // GET: Order
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Order/Details/5
-        public ActionResult Details(int id)
         {
             return View();
         }
@@ -42,6 +41,20 @@ namespace StoreApplication.WebApp.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult ListOrders()
+        {
+            List<OrdersLogic> orders = orderData.DisplayOrdersDB();
+
+            return View(orders);
+        }
+
+        #region To Be Added Later
+        // GET: Order/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
         }
 
         // GET: Order/Edit/5
@@ -89,5 +102,6 @@ namespace StoreApplication.WebApp.Controllers
                 return View();
             }
         }
+        #endregion
     }
 }

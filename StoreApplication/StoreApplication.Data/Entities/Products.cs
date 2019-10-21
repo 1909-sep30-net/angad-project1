@@ -15,10 +15,6 @@ namespace StoreApplication.Data.Entities
         public string ProductName { get; set; }
         public string ProductType { get; set; }
 
-        /*
-        
-        */
-
         public virtual ICollection<Inventory> Inventory { get; set; }
         public virtual ICollection<OrderedProducts> OrderedProducts { get; set; }
     }
