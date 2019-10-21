@@ -24,43 +24,7 @@ namespace StoreApplication.Data
         public List<Customer> tempCustData = new List<Customer>();
         public List<Product> tempProdData = new List<Product>();
 
-        //ADD FOR MULTIPLE PRODUCTS
-        public void CreateOrder(string jsonFilePath, string jsonFilePathCustomer, string jsonFilePathProducts, int selectProd, int selectCust, int citySelect, int quant, string dateString)
-        {
-
-            /*Random random = new Random();
-            order.OrderId = random.Next(10000, 99999);*/
-
-            //tempProdData[selectProd - 1].location[citySelect - 1].Inventory -= quant;
-            product.SerializeJsonToFile(jsonFilePathProducts, tempProdData);
-
-            order.orderQuantity = quant;
-            
-            tempProdData[selectProd - 1].location[citySelect - 1].orderSelect = true;
-
-            order.product = tempProdData[selectProd - 1];
-            order.customer = tempCustData[selectCust - 1];
-
-            //EXCEPTION HANDLING
-            DateTime date = DateTime.ParseExact(dateString, "dd/MM/yyyy", null);
-            order.OrderDate = date;
-
-            List<Order> tempOrder = new List<Order>();
-
-            if (File.Exists(jsonFilePath))
-            {
-                tempOrder.AddRange(order.DeserializeJsonFromFile(jsonFilePath));
-                tempOrder.Add(order);
-            }
-            else
-            {
-                tempOrder.Add(order);
-            }
-            order.SerializeJsonToFile(jsonFilePath, tempOrder);
-
-        }
-
-        public void CreateOrderDB(int selectProd, int selectCust, int citySelect, int quant, string dateString)
+        public void CreateOrderDB(int selectProd, int selectCust, int citySelect, int quant)
         {
 
             string connectionString = SecretConfiguration.configurationString;
@@ -79,7 +43,8 @@ namespace StoreApplication.Data
 
             orders.CustomerId = selectCust;
             orders.Quantity = quant;
-            orders.OrderDate = DateTime.ParseExact(dateString, "MM/dd/yyyy", null);
+            //orders.OrderDate = DateTime.ParseExact(dateString, "MM/dd/yyyy", null);
+            orders.OrderDate = DateTime.Now;
 
             context.Orders.Add(orders);
             context.SaveChanges();
@@ -191,17 +156,6 @@ namespace StoreApplication.Data
                     Console.Write($"Game Name: {foundProductName.ProductName} | City: {foundProduct.LocationId}\n");
                 }
             }
-        }
-
-        public List<Order> DisplayOrders(string jsonFilePath)
-        {
-            List<Order> tempData = new List<Order>();
-            if (File.Exists(jsonFilePath))
-            {
-                tempData = order.DeserializeJsonFromFile(jsonFilePath);
-            }
-            
-            return tempData;
         }
 
     }

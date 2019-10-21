@@ -1,0 +1,55 @@
+﻿@model IEnumerable<StoreApplication.Business.LocationsLogic>
+
+@{
+    ViewData["Title"] = "Select Location";
+}
+
+<h1>Select The Store You Want To Buy From</h1>
+
+<form asp-action="CreateLocation">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Selection
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.LocationId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Inventory)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input type="radio" name="selectLocation" value="@Html.DisplayFor(modelItem => item.LocationId)" required />
+                            @Html.DisplayFor(modelItem => item.LocationId)
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocationId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inventory)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="form-group text-center">
+        <input type="submit" value="Select Customer" class="btn btn-primary btn-block" />
+    </div>
+</form>

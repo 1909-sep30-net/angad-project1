@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using StoreApplication.Data.Entities;
 using System.Linq;
+using StoreApplication.Business;
 
 namespace StoreApplication.Data
 {
@@ -12,7 +13,7 @@ namespace StoreApplication.Data
         public int LocationCount { get; set; }
         public List<int> LocationPresent { get; set; }
 
-        public void DisplayLocationsDB(int product)
+        public List<LocationsLogic> DisplayLocationsDB(int prod)
         {
             string connectionString = SecretConfiguration.configurationString;
 
@@ -22,28 +23,33 @@ namespace StoreApplication.Data
 
             using var context = new GameStoreContext(options);
 
-            var foundName = context.Inventory.FirstOrDefault(p => p.ProductId == product);
+            var foundName = context.Inventory.FirstOrDefault(p => p.ProductId == prod);
             var foundCity = context.Locations.FirstOrDefault(p => p.LocationId == foundName.LocationId);
             
-            var foundLoc = context.Inventory.Where(p => p.ProductId == product).ToList();
+            var foundLoc = context.Inventory.Where(p => p.ProductId == prod).ToList();
 
             if (foundName is null)
             {
-                Console.WriteLine("No Record Found");
-                return;
+                //Console.WriteLine("No Record Found");
+                return null;
             }
+
+            List<LocationsLogic> locations = new List<LocationsLogic>();
 
             foreach (Inventory loc in foundLoc)
             {
-                if(loc.ProductId == product)
+                if(loc.ProductId == prod)
                 {
+                    LocationsLogic tempLoc = new LocationsLogic();
                     var foundLocName = context.Locations.FirstOrDefault(p => p.LocationId == loc.LocationId);
-                    Console.WriteLine($"Id: {loc.LocationId} | City: {foundLocName.City} | {GetInventoryDB((int)loc.LocationId, product)}");
-                    
+                    tempLoc.LocationId = (int)loc.LocationId;
+                    tempLoc.City = foundLocName.City;
+                    tempLoc.Inventory = GetInventoryDB((int)loc.LocationId, prod);
+                    //Console.WriteLine($"Id: {loc.LocationId} | City: {foundLocName.City} | {GetInventoryDB((int)loc.LocationId, product)}");
+                    locations.Add(tempLoc);
                 }
-                //LocationPresent.Add((int)loc.LocationId);
             }
-            
+            return locations;
 
         }
 

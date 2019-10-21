@@ -13,6 +13,10 @@ namespace StoreApplication.WebApp.Controllers
     public class OrderController : Controller
     {
         OrderData orderData = new OrderData();
+        CustomerData custData = new CustomerData();
+        ProductData prodData = new ProductData();
+        LocationData locData = new LocationData();
+        static int customer, product, location;
 
         // GET: Order
         public ActionResult Index()
@@ -21,27 +25,104 @@ namespace StoreApplication.WebApp.Controllers
         }
 
         // GET: Order/Create
-        public ActionResult Create()
+        public ActionResult SelectCustomer()
+        {
+
+            List<Customers> customers = custData.ListCustomersDB();
+
+            return View(customers);
+
+        }
+
+        public ActionResult SelectProducts()
+        {
+            List<Products> products = prodData.DisplayProductsDB();
+
+            return View(products);
+        }
+
+        public ActionResult SelectLocation()
+        {
+            List<LocationsLogic> locs = locData.DisplayLocationsDB(product);
+
+            return View(locs);
+        }
+
+        // GET: Order/Create
+        public ActionResult CreateOrder()
         {
             return View();
         }
 
-        // POST: Order/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult CreateOrder(IFormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
+                int quantity = int.Parse(collection["Quantity"]);
+                orderData.CreateOrderDB(product, customer, location, quantity);
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ListOrders));
             }
             catch
             {
                 return View();
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCustomer(IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                customer = int.Parse(collection["selectCustomer"]);
+
+                return RedirectToAction(nameof(SelectProducts));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateProduct(IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                product = int.Parse(collection["selectProduct"]);
+
+                return RedirectToAction(nameof(SelectLocation));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateLocation(IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                location = int.Parse(collection["selectLocation"]);
+
+                return RedirectToAction(nameof(CreateOrder));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
         public ActionResult ListOrders()
         {
