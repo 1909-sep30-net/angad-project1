@@ -102,7 +102,7 @@ namespace StoreApplication.Data
 
         }
 
-        public void DisplayOrdersCustomerDB(int customerId)
+        public List<OrdersLogic> DisplayOrdersCustomerDB(int customerId)
         {
             string connectionString = SecretConfiguration.configurationString;
 
@@ -115,22 +115,34 @@ namespace StoreApplication.Data
             using var context3 = new GameStoreContext(options);
             using var context4 = new GameStoreContext(options);
 
+            List<OrdersLogic> orders = new List<OrdersLogic>();
+
             foreach (Orders order in context.Orders)
             {
+                OrdersLogic tempOrder = new OrdersLogic();
+
                 var foundName = context2.Customers.FirstOrDefault(p => p.CustomerId == order.CustomerId);
                 var foundProduct = context3.OrderedProducts.FirstOrDefault(p => p.CustomerId == foundName.CustomerId && p.OrderId == order.OrderId);
                 var foundProductName = context4.Products.FirstOrDefault(p => p.ProductId == foundProduct.ProductId);
+                var foundLocName = context4.Locations.FirstOrDefault(p => p.LocationId == foundProduct.LocationId);
 
                 if (foundProduct.CustomerId == customerId)
                 {
-                    Console.Write($"OrderID: {order.OrderId} | Order Date: {order.OrderDate} | Quantity: {order.Quantity} | ");
-                    Console.Write($"Customer Name: {foundName.FirstName + " " + foundName.LastName} | ");
-                    Console.Write($"Game Name: {foundProductName.ProductName}\n");
+
+                    tempOrder.OrderId = order.OrderId;
+                    tempOrder.OrderDate = order.OrderDate;
+                    tempOrder.Quantity = (int)order.Quantity;
+                    tempOrder.CustomerName = foundName.FirstName + " " + foundName.LastName;
+                    tempOrder.LocationName = foundLocName.City;
+                    tempOrder.ProductName = foundProductName.ProductName;
+
+                    orders.Add(tempOrder);
                 }
             }
+            return orders;
         }
 
-        public void DisplayOrdersStoreDB(int locationId)
+        public List<OrdersLogic> DisplayOrdersStoreDB(int locationId)
         {
             string connectionString = SecretConfiguration.configurationString;
 
@@ -142,20 +154,31 @@ namespace StoreApplication.Data
             using var context2 = new GameStoreContext(options);
             using var context3 = new GameStoreContext(options);
             using var context4 = new GameStoreContext(options);
-            
+
+            List<OrdersLogic> orders = new List<OrdersLogic>();
+
             foreach (Orders order in context.Orders)
             {
+                OrdersLogic tempOrder = new OrdersLogic();
+
                 var foundName = context2.Customers.FirstOrDefault(p => p.CustomerId == order.CustomerId);
                 var foundProduct = context3.OrderedProducts.FirstOrDefault(p => p.CustomerId == foundName.CustomerId && p.OrderId == order.OrderId);
                 var foundProductName = context4.Products.FirstOrDefault(p => p.ProductId == foundProduct.ProductId);
-                
+                var foundLocName = context4.Locations.FirstOrDefault(p => p.LocationId == foundProduct.LocationId);
+
                 if (foundProduct.LocationId == locationId)
                 {
-                    Console.Write($"OrderID: {order.OrderId} | Order Date: {order.OrderDate} | Quantity: {order.Quantity} | ");
-                    Console.Write($"Customer Name: {foundName.FirstName + " " + foundName.LastName} | ");
-                    Console.Write($"Game Name: {foundProductName.ProductName} | City: {foundProduct.LocationId}\n");
+                    tempOrder.OrderId = order.OrderId;
+                    tempOrder.OrderDate = order.OrderDate;
+                    tempOrder.Quantity = (int)order.Quantity;
+                    tempOrder.CustomerName = foundName.FirstName + " " + foundName.LastName;
+                    tempOrder.LocationName = foundLocName.City;
+                    tempOrder.ProductName = foundProductName.ProductName;
+
+                    orders.Add(tempOrder);
                 }
             }
+            return orders;
         }
 
     }

@@ -131,6 +131,70 @@ namespace StoreApplication.WebApp.Controllers
             return View(orders);
         }
 
+        public ActionResult SelectCustomerForOrder()
+        {
+
+            List<Customers> customers = custData.ListCustomersDB();
+
+            return View(customers);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SelectedCustomer(IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                customer = int.Parse(collection["selectCustomer"]);
+
+                return RedirectToAction(nameof(ListOrdersCustomer));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ListOrdersCustomer()
+        {
+            List<OrdersLogic> orders = orderData.DisplayOrdersCustomerDB(customer);
+
+            return View(orders);
+        }
+
+        public ActionResult SelectStoreForOrder()
+        {
+            List<LocationsLogic> locs = locData.DisplayAllLocationsDB();
+
+            return View(locs);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SelectedLocation(IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                location = int.Parse(collection["selectLocation"]);
+
+                return RedirectToAction(nameof(ListOrdersStore));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ListOrdersStore()
+        {
+            List<OrdersLogic> orders = orderData.DisplayOrdersStoreDB(location);
+
+            return View(orders);
+        }
+
         #region To Be Added Later
         // GET: Order/Details/5
         public ActionResult Details(int id)

@@ -53,7 +53,7 @@ namespace StoreApplication.Data
 
         }
 
-        public void DisplayAllLocationsDB()
+        public List<LocationsLogic> DisplayAllLocationsDB()
         {
             string connectionString = SecretConfiguration.configurationString;
 
@@ -63,11 +63,17 @@ namespace StoreApplication.Data
 
             using var context = new GameStoreContext(options);
 
+            List<LocationsLogic> locations = new List<LocationsLogic>();
+
             foreach (Locations loc in context.Locations)
             {
-                Console.WriteLine($"Id: {loc.LocationId} | City: {loc.City}");
+                LocationsLogic tempLoc = new LocationsLogic();
+                tempLoc.LocationId = loc.LocationId;
+                tempLoc.City = loc.City;
+                locations.Add(tempLoc);
             }
             LocationCount = context.Locations.Count();
+            return locations;
 
         }
 

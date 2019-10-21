@@ -1,40 +1,31 @@
 ﻿@model IEnumerable<StoreApplication.Business.OrdersLogic>
 
 @{
-    ViewData["Title"] = "ListOrders";
+    ViewData["Title"] = "ListOrdersCustomer";
 }
 
-<h1>ListOrders</h1>
+<h1>ListOrdersCustomer</h1>
 
-<p>
-    <a asp-action="SelectCustomer">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @*@Html.DisplayNameFor(model => model.OrderId)*@
                 Order ID
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.OrderDate)*@
-                Date
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.CustomerName);*@
                 Customer Name
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.ProductName);*@
+                Date
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
                 Game Name
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.LocationName);*@
                 Store
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Quantity)*@
-                Quantity
             </th>
         </tr>
     </thead>
@@ -45,19 +36,19 @@
                 @Html.DisplayFor(modelItem => item.OrderId)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.OrderDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
+                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LocationName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
         </tr>
 }

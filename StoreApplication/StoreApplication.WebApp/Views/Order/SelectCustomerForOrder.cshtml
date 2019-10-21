@@ -1,12 +1,12 @@
-﻿@model IEnumerable<StoreApplication.Business.LocationsLogic>
+﻿@model IEnumerable<StoreApplication.Data.Entities.Customers>
 
 @{
-    ViewData["Title"] = "Select Location";
+    ViewData["Title"] = "Select Customer";
 }
 
-<h1>Select The Store You Want To Buy From</h1>
+<h1>Select Customer To See Order Hsitory</h1>
 
-<form asp-action="CreateLocation">
+<form asp-action="SelectedCustomer">
     <table class="table">
         <thead>
             <tr>
@@ -14,13 +14,13 @@
                     Selection
                 </th>
                 <th>
-                    Store ID
+                    Customer ID
                 </th>
                 <th>
-                    City
+                    First Name
                 </th>
                 <th>
-                    Inventory
+                    Last Name
                 </th>
             </tr>
         </thead>
@@ -31,17 +31,17 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <input type="radio" name="selectLocation" value="@Html.DisplayFor(modelItem => item.LocationId)" required />
+                            <input type="radio" name="selectCustomer" value="@Html.DisplayFor(modelItem => item.CustomerId)" required />
                         </div>
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LocationId)
+                        @Html.DisplayFor(modelItem => item.CustomerId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.City)
+                        @Html.DisplayFor(modelItem => item.FirstName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Inventory)
+                        @Html.DisplayFor(modelItem => item.LastName)
                     </td>
                 </tr>
             }
@@ -51,3 +51,4 @@
         <input type="submit" value="Select Customer" class="btn btn-primary btn-block" />
     </div>
 </form>
+
