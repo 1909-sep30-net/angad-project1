@@ -35,6 +35,8 @@ namespace StoreApplication.Data
 
             using var context = new GameStoreContext(options);
 
+            LocationData locDat = new LocationData();
+
             Orders orders = new Orders();
             OrderedProducts orderedProds = new OrderedProducts();
 
@@ -52,6 +54,8 @@ namespace StoreApplication.Data
 
             context.OrderedProducts.Add(orderedProds);
             context.SaveChanges();
+
+            locDat.InventoryUpdate((int) orderedProds.LocationId, (int) orderedProds.ProductId, (int) orders.Quantity);
 
             //Add Decrementing Functionality To The Inventory Of The Location The Order is Created From.1
 

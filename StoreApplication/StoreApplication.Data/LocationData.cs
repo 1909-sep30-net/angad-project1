@@ -97,5 +97,29 @@ namespace StoreApplication.Data
             return (int)foundName.Inventory1;
         }
 
+        public void InventoryUpdate(int location, int product, int amount)
+        {
+            string connectionString = SecretConfiguration.configurationString;
+
+            DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
+                .UseSqlServer(connectionString)
+                .Options;
+
+            using var context = new GameStoreContext(options);
+
+            var foundName = context.Inventory.FirstOrDefault(p => p.LocationId == location && p.ProductId == product);
+
+            if (foundName is null)
+            {
+                return;
+            }
+
+            foundName.Inventory1 -= amount;
+
+            context.Inventory.Update(foundName);
+            context.SaveChanges();
+
+        }
+
     }
 }
