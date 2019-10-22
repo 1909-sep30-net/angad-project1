@@ -42,9 +42,8 @@ namespace StoreApplication.WebApp.Controllers
             return View();
         }
 
-        // POST: Product/Create
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
             try
@@ -94,7 +93,7 @@ namespace StoreApplication.WebApp.Controllers
 
             return View(products);
         }
-
+        
         #region To Be Added Later
         // GET: Product/Details/5
         public ActionResult Details(int id)

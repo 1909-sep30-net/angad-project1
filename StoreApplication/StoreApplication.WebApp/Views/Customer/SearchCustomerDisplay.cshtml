@@ -13,7 +13,11 @@
     <h5>Please Try And Search For A Different Name</h5>
     <br />
     <br />
-    <p><a asp-area="" asp-controller="Customer" asp-action="SearchIndex">Go Back</a></p>
+    <p><a asp-area="" asp-controller="Customer" asp-action="SearchIndex">Search For A Different Name</a></p>
+    <br />
+    <p>Or</p>
+    <br />
+    <p><a asp-area="" asp-controller="Customer" asp-action="Index">Go Back</a></p>
 }
 else
 {
@@ -38,20 +42,20 @@ else
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    <img class="rounded-circle" src="https://www.sackettwaconia.com/wp-content/uploads/default-profile.png" height="50" width="50" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        <img class="rounded-circle" src="https://www.sackettwaconia.com/wp-content/uploads/default-profile.png" height="50" width="50" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustomerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

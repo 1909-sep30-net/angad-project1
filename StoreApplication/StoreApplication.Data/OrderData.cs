@@ -38,12 +38,8 @@ namespace StoreApplication.Data
             Orders orders = new Orders();
             OrderedProducts orderedProds = new OrderedProducts();
 
-            /*Random random = new Random();
-            orders.OrderId = random.Next(10000, 99999);*/
-
             orders.CustomerId = selectCust;
             orders.Quantity = quant;
-            //orders.OrderDate = DateTime.ParseExact(dateString, "MM/dd/yyyy", null);
             orders.OrderDate = DateTime.Now;
 
             context.Orders.Add(orders);
@@ -56,6 +52,8 @@ namespace StoreApplication.Data
 
             context.OrderedProducts.Add(orderedProds);
             context.SaveChanges();
+
+            //Add Decrementing Functionality To The Inventory Of The Location The Order is Created From.1
 
         }
 
