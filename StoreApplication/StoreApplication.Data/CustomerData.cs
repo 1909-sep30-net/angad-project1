@@ -35,7 +35,8 @@ namespace StoreApplication.Data
         public List<Customers> ListCustomersDB()
         {
 
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)
@@ -50,7 +51,8 @@ namespace StoreApplication.Data
 
         public List<Customers> SearchCustomersDB(string name)
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)

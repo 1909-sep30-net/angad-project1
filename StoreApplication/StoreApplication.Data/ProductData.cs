@@ -66,7 +66,8 @@ namespace StoreApplication.Data
 
         public List<Products> DisplayProductsDB()
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)

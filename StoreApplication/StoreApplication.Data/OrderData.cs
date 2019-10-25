@@ -56,7 +56,8 @@ namespace StoreApplication.Data
 
         public List<OrdersLogic> DisplayOrdersDB()
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)
@@ -99,7 +100,8 @@ namespace StoreApplication.Data
 
         public List<OrdersLogic> DisplayOrdersCustomerDB(int customerId)
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)
@@ -139,7 +141,8 @@ namespace StoreApplication.Data
 
         public List<OrdersLogic> DisplayOrdersStoreDB(int locationId)
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)

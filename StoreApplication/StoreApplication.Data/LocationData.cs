@@ -15,7 +15,8 @@ namespace StoreApplication.Data
 
         public List<LocationsLogic> DisplayLocationsDB(int prod)
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)
@@ -55,7 +56,8 @@ namespace StoreApplication.Data
 
         public List<LocationsLogic> DisplayAllLocationsDB()
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)
@@ -79,7 +81,8 @@ namespace StoreApplication.Data
 
         public int GetInventoryDB(int location, int product)
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)
@@ -99,7 +102,8 @@ namespace StoreApplication.Data
 
         public void InventoryUpdate(int location, int product, int amount)
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)
