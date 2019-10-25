@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using StoreApplication.Library;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using StoreApplication.Data.Entities;
@@ -12,7 +11,6 @@ namespace StoreApplication.Data
     public class ProductData
     {
 
-        Product prodData = new Product();
         public int ProductCount { get; set; }
 
         Products products = new Products();
@@ -31,7 +29,7 @@ namespace StoreApplication.Data
             Products prod = new Products();
             
             prod.ProductName = products.ProductName;
-            prod.ProductType = products.ProductType;
+            ////prod.ProductType = products.ProductType;
             prod.ProductUrl = products.ProductUrl;
 
             context.Products.Add(prod);

@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StoreApplication.Business\StoreApplication.Business.csproj" />
-    <ProjectReference Include="..\StoreApplication.Library\StoreApplication.Library.csproj" />
   </ItemGroup>
 
 </Project>
