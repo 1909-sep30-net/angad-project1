@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using StoreApplication.Library;
 using Microsoft.EntityFrameworkCore;
 using StoreApplication.Data.Entities;
 using System.Linq;
@@ -13,21 +12,15 @@ namespace StoreApplication.Data
     public class OrderData
     {
 
-        Order order = new Order();
-
-        Product product = new Product();
-        Customer customer = new Customer();
-
         ProductData dataProduct = new ProductData();
         CustomerData dataCustomer = new CustomerData();
 
-        public List<Customer> tempCustData = new List<Customer>();
-        public List<Product> tempProdData = new List<Product>();
-
+        
         public void CreateOrderDB(int selectProd, int selectCust, int citySelect, int quant)
         {
 
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)

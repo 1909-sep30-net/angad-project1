@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using StoreApplication.Library;
 using Microsoft.EntityFrameworkCore;
 using StoreApplication.Data.Entities;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace StoreApplication.Data
 {
     public class CustomerData
     {
-        Library.Customer customer = new Library.Customer();
+        
         public string[] nameHolder = new string[3];
         public int searchCount = 0;
 
@@ -19,7 +18,8 @@ namespace StoreApplication.Data
         public void AddCustomerDB(Customers customers)
         {
 
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)

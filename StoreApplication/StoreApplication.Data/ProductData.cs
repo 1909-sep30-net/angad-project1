@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using StoreApplication.Library;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using StoreApplication.Data.Entities;
@@ -12,7 +11,6 @@ namespace StoreApplication.Data
     public class ProductData
     {
 
-        Product prodData = new Product();
         public int ProductCount { get; set; }
 
         Products products = new Products();
@@ -20,7 +18,8 @@ namespace StoreApplication.Data
 
         public void AddProductsDB(Products products, List<string> locs, List<string> inv, int storeCount)
         {
-            string connectionString = SecretConfiguration.configurationString;
+            //string connectionString = SecretConfiguration.configurationString;
+            string connectionString = "";
 
             DbContextOptions<GameStoreContext> options = new DbContextOptionsBuilder<GameStoreContext>()
                 .UseSqlServer(connectionString)
