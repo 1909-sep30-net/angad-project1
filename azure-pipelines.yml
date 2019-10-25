@@ -15,3 +15,20 @@ variables:
 steps:
 - script: cd StoreApplication && dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: SonarCloudAnalyze@1
+  displayName: Run SonarCloud Analysis
+
+- task: SonarCloudPrepare@1
+  displayName: Prepare SonarCloud Analysis
+  inputs:
+    SonarCloud: 'sonarcloud-ansimi'
+    organization: 'ansimi'
+    scannerMode: 'MSBuild'
+    projectKey: 'gamestore'
+    projectName: 'The Video Game Store'
+    
+- task: SonarCloudPublish@1
+  displayName: Publish SonarCloud Analysis
+  inputs:
+    pollingTimeoutSec: '300'
