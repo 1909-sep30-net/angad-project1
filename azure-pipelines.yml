@@ -27,6 +27,8 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'gamestore'
     projectName: 'The Video Game Store'
+    extraProperties: |
+      sonar.exclusions=**/lib/**
     
 - task: SonarCloudPublish@1
   displayName: Publish SonarCloud Analysis
